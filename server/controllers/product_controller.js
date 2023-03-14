@@ -10,7 +10,7 @@ const getProducts = asyncHandler(async (req, res) => {
 // Controller function to get a single product by ID
 const getProductById = asyncHandler(async (req, res) => {
   const{name}=req.body
-  const product = await Product.findOne({name});
+  const product = await Product.find({name});
 
   if (product) {
     res.json(product);

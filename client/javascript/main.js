@@ -2,6 +2,8 @@
 
 const pcard = document.getElementsByClassName('provide-card');
 const icons = document.getElementsByClassName('i');
+let products=[]
+let cartItems=[]
 
 function changecolor() {
     pcard[1].classList.add('cardcolor');
@@ -65,3 +67,26 @@ if(localStorage.getItem('city') != null){
     const cityName = localStorage.getItem('city');    
     city.innerHTML = `${cityName}`;
 }
+
+let cart = document.getElementById('cart');
+//CART FUNCTIONS
+function getcart(name,price,url,con,btncart)
+{
+    const item={
+        name: name,
+        price: price,
+        url: url,
+    }
+    cartItems.push(item);
+    let storage= JSON.parse(localStorage.getItem("cart"))
+    if(storage==null){
+        products.push(item)
+        localStorage.setItem("cart",JSON.stringify(products))
+        }
+    }
+    else{
+        products=JSON.parse(localStorage.getItem("cart"))
+        
+    }
+}
+
