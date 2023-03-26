@@ -2,6 +2,8 @@
 
 const pcard = document.getElementsByClassName('provide-card');
 const icons = document.getElementsByClassName('i');
+const cartbutton= document.getElementById('cart-button');
+const axios= require('axios');10
 let products=[]
 let cartItems=[]
 
@@ -83,10 +85,29 @@ function getcart(name,price,url,con,btncart)
         products.push(item)
         localStorage.setItem("cart",JSON.stringify(products))
         }
-    }
     else{
         products=JSON.parse(localStorage.getItem("cart"))
         
     }
 }
+cartbutton.addEventListener('click',function addToCart(){
+    console.log("Test Cart")
+    // Get the data from the form or any other source
+  const data = {
+    username: "john",
+    productName: "Shoes",
+    quantity: 1,
+    price: 100
+  };
 
+  // Send the POST request using Axios
+  axios.post("/api/consumer/cart", data)
+    .then(response => {
+      console.log(response.data.message);
+      // Optionally update the UI to reflect the changes in the cart
+    })
+    .catch(error => {
+      console.error(error);
+      // Optionally display an error message to the user
+    })
+})

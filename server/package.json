@@ -11,7 +11,7 @@
     "array-flatten": "^1.1.1",
     "async-handler": "^0.0.3",
     "asynckit": "^0.4.0",
-    "axios": "^1.3.2",
+    "axios": "^1.3.4",
     "balanced-match": "^1.0.2",
     "base64-js": "^1.5.1",
     "base64id": "^2.0.0",
