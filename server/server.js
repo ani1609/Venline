@@ -11,6 +11,7 @@ const {authUser} = require('./controllers/Con_Controller')
 const{ getProducts}=require('./controllers/product_controller')
 const seller= require('./routes/sellerRoute')
 const Product = require('./models/productmodel');
+const Cart = require('./models/cartmodel');
 dotenv.config()
 connectDb()
 const app = express();
@@ -37,7 +38,15 @@ app.get('/', (req, res) => {
     });
 });
 app.get('/cart', (req, res) => {
-    res.render(path.join(__dirname, '../client', 'cart.ejs'));
+    Cart.findOne({username}, function(err, cart){
+        if(err){
+            console.log('error!');
+            return;
+        }
+        res.render(path.join(__dirname, '../client', 'cart.ejs'),{
+            cart : cart
+        });
+    });
 });
 app.get('/profile', (req, res) => {
     res.render(path.join(__dirname, '../client', 'profile.ejs'));
