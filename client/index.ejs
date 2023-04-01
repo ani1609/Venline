@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Venline</title>
+    <link rel="icon" href="images/favicon.ico">
     <link rel="stylesheet" type="text/css" href="styles/global.css">
     <link rel="stylesheet" type="text/css" href="styles/style.css">
     <script src="https://kit.fontawesome.com/9b7f16bc1d.js" crossorigin="anonymous"></script>
@@ -21,7 +22,7 @@
     <div class="back-animation">
     </div>
   <main>
-    
+
     <%- include('include/navbar') %>
     <section id="header">
         <div id="header-text">
@@ -109,7 +110,7 @@
                 <div class="description"><p><%= i.description %></p></div>
                 <div class="rating">5.0 <i class="fa-solid fa-star"></i></div>
                 <div class="price">Rs. <%= i.price %> / KG</div>
-                <div class="add2cart">Add to Cart</div>
+                <div onclick="addToCart('<%= i.name %>')" class="add2cart" id="cart-button">Add to Cart</div>
                 </div>
             </div>
             <% } %>
@@ -152,8 +153,7 @@
     <%- include('include/footer') %>
 
   </main>
-
-    <script type="text/javascript" src="javascript/main.js"></script>
+     <script type="text/javascript" src="javascript/main.js"></script>
     <script type="text/javascript" src="javascript/navbar.js"></script>
 </body>
 </html>

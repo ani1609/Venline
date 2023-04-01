@@ -8,8 +8,10 @@ const userRoutes= require('./routes/userRoutes')
 const parse= require('body-parser')
 const { notfound, errorhandler } = require('./middlewares/errorHandler');
 const {authUser} = require('./controllers/Con_Controller')
+const{ getProducts}=require('./controllers/product_controller')
 const seller= require('./routes/sellerRoute')
 const Product = require('./models/productmodel');
+const Cart = require('./models/cartmodel');
 dotenv.config()
 connectDb()
 const app = express();
@@ -35,6 +37,17 @@ app.get('/', (req, res) => {
         });
     });
 });
+// app.get('/cart', (req, res) => {
+//     Cart.findOne({username}, function(err, cart){
+//         if(err){
+//             console.log('error!');
+//             return;
+//         }
+//         res.render(path.join(__dirname, '../client', 'cart.ejs'),{
+//             cart : cart
+//         });
+//     });
+// });
 app.get('/cart', (req, res) => {
     res.render(path.join(__dirname, '../client', 'cart.ejs'));
 });
@@ -57,6 +70,8 @@ app.get('/product-file', (req, res) => {
 app.use('/api/consumer',userRoutes)
 //add to cart
 app.use('/api',seller)
+app.use('/',getProducts)
+app.get('/',getProducts)
 //middlewares for error Handling
 app.use(notfound)
 app.use(errorhandler)
