@@ -37,16 +37,19 @@ app.get('/', (req, res) => {
         });
     });
 });
+// app.get('/cart', (req, res) => {
+//     Cart.findOne({username}, function(err, cart){
+//         if(err){
+//             console.log('error!');
+//             return;
+//         }
+//         res.render(path.join(__dirname, '../client', 'cart.ejs'),{
+//             cart : cart
+//         });
+//     });
+// });
 app.get('/cart', (req, res) => {
-    Cart.findOne({username}, function(err, cart){
-        if(err){
-            console.log('error!');
-            return;
-        }
-        res.render(path.join(__dirname, '../client', 'cart.ejs'),{
-            cart : cart
-        });
-    });
+    res.render(path.join(__dirname, '../client', 'cart.ejs'));
 });
 app.get('/profile', (req, res) => {
     res.render(path.join(__dirname, '../client', 'profile.ejs'));
